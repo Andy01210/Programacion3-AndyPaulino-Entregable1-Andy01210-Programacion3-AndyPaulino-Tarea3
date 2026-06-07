@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
+
 public class ListaEmpleado {
     ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
     Scanner leer = new Scanner(System.in);
@@ -17,11 +17,18 @@ public class ListaEmpleado {
         try{
             UsuarioService.ValidarEmpleado(Nombre, Edad, Correo, Salario);
             Empleados.add(new Empleado(Nombre, Edad, Correo, Salario));
-            System.out.println("Proceso FInalizado");
-        }catch(EmpleadoValidator e){
-            System.out.println(e.getMessage());
-        }finally{
             System.out.println("Empleado agregado exitosamente");
+        }catch(EmpleadoValidator a){
+            System.out.println(a.getMessage());
+        }catch(EdadValidator e){
+            System.out.println(e.getMessage());
+        }catch(CorreoValidator i){
+            System.out.println(i.getMessage());
+        }
+        catch(SalarioValidator o){
+            System.out.println(o.getMessage());
+        }finally{
+            System.out.println("Proceso FInalizado");
         }
     }
     public void listar(){

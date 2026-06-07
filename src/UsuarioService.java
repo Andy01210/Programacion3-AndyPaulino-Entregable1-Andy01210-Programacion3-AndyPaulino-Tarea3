@@ -1,5 +1,5 @@
 public class UsuarioService{
-    public static  void ValidarEmpleado(String Nombre, int Edad, String Correo,double Salario)throws EmpleadoValidator{
+    public static  void ValidarEmpleado(String Nombre, int Edad, String Correo,double Salario)throws EmpleadoValidator, EdadValidator, CorreoValidator, SalarioValidator {
         int contador = 0;
         for(char n: Nombre.toCharArray()){
             contador++;
