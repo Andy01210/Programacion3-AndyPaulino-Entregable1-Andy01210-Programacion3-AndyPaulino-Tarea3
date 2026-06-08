@@ -4,6 +4,7 @@ public class ListaEmpleado {
     ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
     Scanner leer = new Scanner(System.in);
     public void Agregar(){
+         try{
         System.out.println("Ingrese el nombre del empleado");
         String Nombre = leer.nextLine();
         System.out.println("\nIngrese la edad del empleado");
@@ -14,7 +15,7 @@ public class ListaEmpleado {
         System.out.println("\nIngrese el salario del empleado");
         double Salario = leer.nextDouble();
         leer.nextLine();
-        try{
+       
             UsuarioService.ValidarEmpleado(Nombre, Edad, Correo, Salario);
             Empleados.add(new Empleado(Nombre, Edad, Correo, Salario));
             System.out.println("Empleado agregado exitosamente");
@@ -27,6 +28,12 @@ public class ListaEmpleado {
         }
         catch(SalarioValidator o){
             System.out.println(o.getMessage());
+        }catch(InputMismatchException u){
+            leer.nextLine(); 
+            System.out.println("\"Error: Debe ingresar un numero correcto");
+        }catch(Exception b){
+            System.out.println("Error fuera de lo comun:"+ b.getMessage());
+
         }finally{
             System.out.println("Proceso FInalizado");
         }
